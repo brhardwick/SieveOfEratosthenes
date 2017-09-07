@@ -8,7 +8,7 @@ public class program {
     public static void main(String[] args) {
     	
     	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    	this is some text that should not compile
+    	
     	try {
     		String max;
     		if(args.length>0 && args != null)
