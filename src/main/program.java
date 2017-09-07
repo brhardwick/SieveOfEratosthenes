@@ -8,7 +8,7 @@ public class program {
     public static void main(String[] args) {
     	
     	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    	    	
+    	int x = 1/0;    	
     	try {
     		String max;
     		if(args.length>0 && args != null)
