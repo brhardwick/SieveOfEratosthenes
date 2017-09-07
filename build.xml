@@ -27,7 +27,7 @@
 	</target>
 
 	<!-- Test the application by running it against 2 bad values and a good one -->
-	<target name="test" description="test the preconditions">
+	<target name="test" description="test the preconditions"  failonerror="yes">
 		<java jar="${build.dir}/${projectName}.jar" fork="true">
 			<arg value="test" />
 		</java>
