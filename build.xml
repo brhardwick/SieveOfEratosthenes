@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project name="Sieve_of_Erastosthenes" basedir=".">
+	<!-- Project Name -->
+	<property name="projectName" value="Sieve" />
+	<!-- Location of source code -->
+	<property name="src.dir" location="src" />
+	<!-- Location to put the executables -->
+	<property name="build.dir" location="bin" />
+	<!-- Location to put the class files -->
+	<property name="classes.dir" location="classes" />
+
+	<!-- This Target will delete the folders to be used when compiling -->
+	<target name="clean" description="clean the workspace">
+		<delete dir="${build.dir}" />
+		<delete dir="${classes.dir}" />
+	</target>
+
+	<!-- Compile the java code to class files and create the jar -->
+	<target name="compile" description="compile the source " depends="clean">
+		<mkdir dir="${classes.dir}" />
+		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}" />
+		<jar jarfile="${build.dir}/${projectName}.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="main.program" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- Test the application by running it against 2 bad values and a good one -->
+	<target name="test" description="test the preconditions">
+		<java jar="${build.dir}/${projectName}.jar" fork="true">
+			<arg value="test" />
+		</java>
+
+		<java jar="${build.dir}/${projectName}.jar" fork="true">
+			<arg value="-10" />
+		</java>
+
+		<java jar="${build.dir}/${projectName}.jar" fork="true">
+			<arg value="100" />
+		</java>
+
+	</target>
+	<target name="main" depends="compile,test" />
+</project>
